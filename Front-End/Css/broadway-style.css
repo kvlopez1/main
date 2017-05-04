@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*Color Palette
+#27AE60 - Green
+#F39C12 - Orange
+#C0392B - Red
+#F5B041 - Light Orange
+*/
+
+/*Using 1024px x 548px as typical screen dimensions*/
+	#currentTitle
+	{
+		display: none;
+	}
+	
+	.titleBB
+	{
+		margin-left: 362px;
+		margin-right: 362px;
+	}
+	
+	.titleUnder
+	{
+		margin-left: 353px;
+		margin-right: 353px;
+		font-size:17px;
+	}
+	
+	h2
+	{
+		font-size:25px;
+		color:#C0392B;
+	}
+	
+	#navSections
+	{
+		float:left;
+		padding:0;
+		margin-bottom:20px;
+		list-style-type:none;
+		width:1024px; /*typical width of screen*/
+		height:50px;
+		background-color:#27AE60;
+		font-weight:bold;
+	}
+	
+	#navSections a
+	{
+		color:#C0392B;
+	}
+	
+	li
+	{
+		display: inline;
+		margin-left:80px;
+		margin-right:80px;
+		font-size: 17px;
+	}
+	
+	#showTimes
+	{
+		text-align:right;
+		width:1024px;
+		height:150px;
+		padding:0;
+		background-color: #F39C12;
+		float:right;
+	}
+	
+	section
+	{
+		display:inline-block;
+		width:500px;
+		vertical-align:top;
+	}
+	
+	h3
+	{
+		font-size:20px;
+		color: #F5B041;
+	}
+	
+	#showTimes table
+	{
+		float:right;
+		color:#C0392B;
+	}
+	
+	#nowPlaying
+	{
+		padding:0;
+		float:left;
+	}
+	
+	#nowPlaying p
+	{
+		text-align:justify;
+		margin-right:5px;
+		margin-left:5px;
+	}
+	
+	#reviews
+	{
+		padding:0;
+		float:right;
+	}
+	
+	#reviews blockquote
+	{
+		font-style:italic;
+	}
+	
+	#photos
+	{
+		padding:0;
+		float:right;
+	}
+	
+	#photos img
+	{
+		width:500px;
+	}
+	
+	footer
+	{
+		clear: both;
+    	position: relative;
+    	z-index: 10;
+    	height: 20px;
+    	margin-top: 20px;
+    	font-weight:bold;
+	}

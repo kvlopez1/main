@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sparky the Sun Devil</title>
+
+<style type="text/css">
+body /* write an element selector that targets all body elements */
+	{margin:0;
+	padding:0;
+	background-color: #CCC;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+ /* write an id selector that targets all wrapper elements */
+ #wrapper
+	{margin:10px;
+	padding:0;
+	width:1000px;
+	height:750px;
+	}
+ /*  write an id selector that targets all header elements */
+ #header
+	{width:990px;
+	height:90px;
+	background-color:#990033;
+	margin:0;
+	padding:5px;
+	}
+ /*  write an id selector that targets all sideBar elements */
+ #sideBar
+	{width:200px;
+	height:650px;
+	margin:0;
+	padding:0;
+	background-color: #ffb310;
+	float:left;
+	}
+ /* write an class selector that targets all contact elements */
+ .contact
+	{width:190px;
+	height:auto;
+	margin:0;
+	padding:5px;
+	background-color:#990033;
+	color:#FFFFFF;
+	}
+ /*write a child selector that targets all unordered lists with list items*/
+ ul > li
+	{list-style:none;
+	}
+ /* write an id selector that targets all mainContent elements */
+ #mainContent
+	{width:790px;
+	height:640px;
+	background-color:#fff;
+	float:right;
+	margin:0;
+	padding:5px;
+	}
+  /* write an descendent selector that targets all heading one's in the ID of header */
+  #header h1
+	{font-size:2.5em;
+	color: #FFFFFF;
+	}
+ /* write an element-specific selector that targets all span's in the class year */
+ .year
+	{color:#ffb310;
+	}
+ /* write an group selector that targets all paragraph and quote elements */
+ p, q
+	{font-size:1em;
+	color:#666666;
+	}
+ /* write an element selector that targets all quote tags */
+ q
+	{font-style:italic;
+	}
+ h1
+	{font-size:2em;
+	color:#000000;
+	}
+ /* write an element selector that targets all heading two tags */
+ h2
+	{font-size:1.5em;
+	color:#000000;
+	}
+ /* write an element selector that targets the hyperlinks */
+ a:link
+	{font-weight:bold;
+	text-decoration:underline;
+	color:#FFB310;
+	font-size:1em;
+	}
+ /* write an adjacent selector that targets paragraph tags that follow heading one tags */
+ h1 + p
+	{color:#FFB310;
+	}
+ /* write an attribute selector that targets span tags with the class of year */
+ .year
+	{font-size:1.25em;
+	}
+ /* write an element-specific selector that targets all unordered lists with the class nav --*/
+ .nav ul
+	{margin-bottom: 15px;
+	margin-left:0;
+	}
+ul.nav li 
+	{margin-bottom:2px;
+	}
+ /* write an element-specific selector that targets unordered lists in the class nav with a descendent selector targeting hyperlinks */
+ ul.nav li a:link
+	{padding: 5px 5px 5px 15px;
+	display: block; 
+	width: 100px;  
+	text-decoration: none;
+	background:#990033;
+	color:#ffffff;
+	}
+ul.nav a:hover, ul.nav a:active
+	{background:#ffffff;
+	color: #000;
+	}
+ /* write an dynamic pseudo-class selector targeting hyperlinks in the visited link state */
+ a:visited
+	{color:#CCCCCC;
+	}
+ /* write an pseudo-element selector targeting the first letter of a paragraph that adjacently follows a heading one tag */
+ h1 + p:first-letter
+	{font-size:2em;
+	}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+	<h1>Sparky the Sun Devil</h1>
+</div>
+
+<div id="sideBar">
+	<ul class="nav">
+		<li><a href="http://asu.edu">Home</a></li>
+        <li><a href="http://asu.edu">Resume</a></li>
+   		<li><a href="http://asu.edu">Gallery</a></li>
+	</ul>
+    <h2>Contact Me:</h2>
+    <ul class="contact"><li>Phone: (480) Sun-Devil</li>
+    	<li>Email: <a href="mailto:sparky@asu.edu">sparky@asu.edu</a></li>
+        <li>Website: <a href="http://asu.edu">http://asu.edu</a></li>
+    </ul>
+</div>
+
+<div id="mainContent">
+	<h1>Sparky the Sun Devil</h1>
+	<p>My homepage is a showcase of my talents and interests.</p>
+	<p>Please surf my site to get to know me and my work better. If you are interested in hiring me, please contact my via phone or email. </p>
+    <q>Fight, Devils Down The Field! Fight With Your Might and Don't Ever Yield!</q>
+
+    <h2>Resume</h2>
+    <p>Find out more about my work experience by viewing my <a href="http://asu.edu">resume.</a></p>
+    
+    <h2>Gallery</h2>
+    <p>See more about me and my interests by viewing my <a href="http://asu.edu">gallery.</a></p>
+    
+    <h2>About Me</h2>
+    <p>I am the official mascot of Arizona State University. Originally the ASU athletic teams' mascot was an owl, then became a "Normal" (named for the Tempe Normal School), then was later changed to a bulldog. The State Press, the student newspaper, ran frequent appeals during the fall of <span class="year">1946</span>, urging the Bulldog to be replaced by the new Sun Devil. On November 8 of that year the student body voted 819 to 196 to make the change. On November 20, as reported by the Arizona Republic, the student council made it official. The following day, the first Arizona State team played as the Sun Devils. In <span class="year">1948</span>, an alumnus and Disney illustrator by the name of Bert Anthony designed Sparky, an imp with a trident (also described as a pitchfork).</p>
+</div>
+
+</div>
+
+</body>
+</html>
