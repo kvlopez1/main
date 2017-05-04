@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title>
+    	Image Resizer
+	</title>
+	<style>
+    	#imagePreview {
+        	display: block;
+    	}
+    	#title {
+        	font-size: 45px;
+        	margin: auto;
+        	text-align: center;
+        	color: coral;
+    	}
+    	.center {
+        	position: absolute;
+        	width: 100%;
+        	margin: auto;
+        	text-align: center;
+    	}
+    	#uploadImage {
+        	color: mediumpurple;
+    	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        	crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script>
+    	var dims = [29, 58, 87, 40, 80, 120, 180, 76, 152, 512, 1024];
+    	var imageUploaded = function () {
+        	var file = $('#uploadImage').get(0);
+        	console.log(file.files[0].type);
+        	if (file.files[0].type.split("/")[0].toLowerCase() != "image") {
+            	alert("Incorrect file type -- Please ensure you are uploading an image file.");
+            	return;
+        	}
+        	if (file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+            	var FR = new FileReader();
+            	FR.onload = function (e) {
+                	var data = e.target.result;
+                	console.log(data);
+
+                	var canvas = document.createElement("canvas");
+                	var img = document.createElement("img");
+                	img.onload = function () {
+                    	for(var i = 0; i < dims.length; i++)
+                    	{
+                        	renderIcon(canvas, img, dims[i], dims[i]);
+                    	}
+                	}
+                	img.src = data;
+
+                	//var canvas1 = document.createElement("canvas");
+                	//var img1 = document.createElement("img");
+                	//img1.onload = function () {
+                	//	renderIcon(canvas1, img1, 58, 58);
+                	//}
+                	//img1.src = data;
+
+
+            	};
+            	FR.readAsDataURL(file.files[0]);
+        	}
+    	}
+
+    	function renderIcon(canvas, img, h, w) {
+        	var width = img.width;
+        	var height = img.height;
+        	var w2 = w;
+        	var h2 = h;
+        	if (width > height) {
+            	if (width > w) {
+                	w2 = w;
+                	h2 = height * w / width;
+            	}
+        	} else {
+            	if (height > h) {
+                	h2 = h;
+                	w2 = width * h / height;
+            	}
+        	}
+        	canvas.width = w;
+        	canvas.height = h;
+        	var ctx = canvas.getContext("2d");
+        	ctx.drawImage(img, 0, 0, w2, h2);
+        	var base64St = canvas.toDataURL("image/png");
+        	var mu = "<br>";
+        	mu += h + "px x " + w + "px</br>"
+        	mu += "<img height=" + h + " width=" + w + " src=" + base64St + "><hr>";
+
+        	document.getElementById("imagePreviewWrapper").innerHTML += mu;
+    	}
+	</script>
+
+</head>
+<body>
+<p id="title">Image Resizer</p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<input type="file" name="uploadImage" id="uploadImage" onchange="imageUploaded()" class="center">
+</div>
+<div id="imagePreviewWrapper" class="col-md-12 col-sm-12 col-xs-12"></div>
+</body>
+</html>

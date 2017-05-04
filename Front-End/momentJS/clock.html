@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  	<title>World Clock </title>
+  	<script src="clock.js"></script>
+  	<link rel="stylesheet" href="clock.css"></link>
+  	<script src='https://code.jquery.com/jquery-3.2.0.min.js'> </script>
+  	<script src="http://momentjs.com/downloads/moment.js"></script>
+	<script src="https://momentjs.com/downloads/moment-timezone-with-data-2012-2022.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script>
+  function back()
+	{
+		document.getElementById("btnBack").className = "back";
+		document.getElementById("btnBack").style.display = "none";
+		document.getElementById("bodyTitle").className = "title";
+  		document.getElementById("timeZone1").className = "row";
+  		document.getElementById("timeZone2").className = "row";
+        document.getElementById("timeZone3").className = "row";
+        document.getElementById("body").className = "bodyClass";
+        document.getElementById("phoenix").className = "col-md-6 clock station js-phoenix";
+        document.getElementById("london").className = "col-md-6 clock station js-london";
+        document.getElementById("tokyo").className = "col-md-6 clock station js-tokyo";
+	}
+  </script>
+  <style>
+	.label {
+  		background: #fff;
+  		border-radius: 0.25em;
+  		color: black;
+  		font-family: Verdana, 'Verdana Regular', Tahoma, 'Tahoma', Helvetica, Arial, sans-serif;
+  		font-size: 1em;
+  		font-weight: bold;
+  		text-transform: uppercase;
+  		padding: 0.5em 0.75em 0.25em;
+  		position: absolute;
+  		top: -4em;
+  		left: 50%;
+  		transform: translate(-50%, 0);
+	}
+  </style>
+</head>
+<body id="body" class="bodyClass" onload='start()'>
+<span id="btnBack" class="back" onclick="back()"> < </span><span id="bodyTitle" class="title">World Clock</span><br>
+<div class="row" id="timeZone1" onclick="showClock('phoenix')">
+	<div class="col-md-6 col-sm-6 col-xs-7">
+		<span id="timeZoneTitle">Phoenix</span><br>
+		<span id="dayPhoenix" class="titleDay">Today, +0HRS</span>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-5" id="divTime">
+		<p id="timePhoenix"></p>
+	</div>
+</div>
+<div class="row" id="timeZone2" onclick="showClock('london')">
+	<div class="col-md-6 col-sm-6 col-xs-6">
+		<span id="timeZoneTitle">London</span><br>
+		<span id="dayLondon" class="titleDay"></span>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-6" id="divTime">
+		<p id="timeLondon"></p>
+	</div>
+</div>
+<div class="row" id="timeZone3" onclick="showClock('tokyo')">
+	<div class="col-md-6 col-sm-6 col-xs-6">
+		<span id="timeZoneTitle">Tokyo</span><br>
+		<span id="dayTokyo" class="titleDay"></span>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-6" id="divTime">
+		<p id="timeTokyo"></p>
+	</div>
+</div>
+<div class="col-md-12 theClockWrapper clocks active bounce">
+	<div class="col-md-3">&nbsp;</div>
+	<div class="col-md-6 clock station js-phoenix" id="phoenix">
+    	<div class="label">Phoenix</div>
+    	<div class="hours-container">
+      		<div class="hours"></div>
+    	</div>
+    	<div class="minutes-container">
+      		<div class="minutes"></div>
+    	</div>
+    	<div class="seconds-container">
+      		<div class="seconds"></div>
+    	</div>
+	</div>
+  	<div class="col-md-6 clock station js-london" id="london">
+    	<div class="label">London</div>
+    	<div class="hours-container">
+      		<div class="hours"></div>
+    	</div>
+    	<div class="minutes-container">
+      		<div class="minutes"></div>
+    	</div>
+    	<div class="seconds-container">
+      		<div class="seconds"></div>
+    	</div>
+  	</div>
+  	<div class="col-md-6 clock station js-tokyo" id="tokyo">
+    	<div class="label">Tokyo</div>
+    	<div class="hours-container">
+      		<div class="hours"></div>
+    	</div>
+    	<div class="minutes-container">
+      		<div class="minutes"></div>
+    	</div>
+    	<div class="seconds-container">
+      		<div class="seconds"></div>
+    	</div>
+  	</div>
+  	</div>
+</div>
+</body>
+</html>

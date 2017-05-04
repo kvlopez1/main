@@ -1,0 +1,170 @@
+<html>
+
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, maximum-scale=1.0">
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'> </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+@media (max-width: @screen-xs-max) {
+  #detailsW{
+    /*min-width: calc(100% - 40px);*/
+    min-width: @screen-xs-min;
+  }
+  #list{
+    min-width: 100%;
+  }
+  #back{
+    display: block;
+    color: white;
+  }
+  .condHide{
+    display: none;
+  }
+}
+
+h1{
+  text-align: center;
+}
+
+
+@media (min-width: @screen-md-min) {
+  #back
+  {
+    display: none;
+  }
+}
+#list a{
+  display: block;
+  padding: 5px;
+  color: black;
+  min-height: 60px;
+}
+
+.mouse #list a:hover{
+  color: red;
+}
+
+.touch #list a:active{
+  color: red;
+}
+
+#list p{
+  display: block;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 10px;
+}
+
+.thumb{
+  height: 60px;
+  width: 60px;
+  background-position: 50%;
+  background-size: cover;
+  float: left;
+  margin-right: 5px;
+}
+
+#list{
+  position: absolute;
+  left: 0px;
+  /*width: 200px;*/
+  background: rgba(0,0,0,.1);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#list a{
+  text-decoration: none;
+}
+
+#detailsW{
+  position: absolute;
+  right: 0px;
+  /*width: calc(100% - 240px);*/
+  background: rgb(0,0,0);
+  color: white;
+  padding: 20px;
+}
+
+.active{
+  background-color: gold;
+}
+</style>
+  <script src='asyncReq.js'></script>
+  <script>
+    var isTouch = false;
+
+    function start(){
+      var ua = navigator.userAgent;
+      if(ua.indexOf("iPhone") >= 0 || ua.indexOf("iPad") >= 0 || ua.indexOf("Android") >= 0){
+        isTouch = true;
+      }
+      if(isTouch){
+        $("body").addClass("touch");
+      }
+      else{
+        $("body").addClass("mouse");
+      }
+    }
+
+    function itemSelected(index){
+      var markup = "<h2>" + rssData[index]["im:name"].label + "</h2>";
+      markup += "<p>" + rssData[index].summary.label + "</p>";
+      document.getElementById("details").innerHTML = markup;
+
+      $("#list a").removeClass('active');
+      $("#list a:nth-of-type(" + (index+1) + ")").addClass('active');
+
+      if($(window).innerWidth() <= 500){
+         $("#list").addClass("hidden-xs");
+         $("#detailsW").removeClass("hidden-xs");
+      }
+    }
+
+    function goBack(){
+      $("#list").removeClass("hidden-xs");
+      $("#detailsW").addClass("hidden-xs");
+      $("#list a").removeClass('active');
+    }
+
+    var rssData = [];
+    var filename = "./itunes.json";
+    var callback = function(res){
+      var data = JSON.parse(res).feed.entry;
+      rssData = data;
+      var markup = "";
+      for(var i = 0; i < data.length; i++){
+        var item = data[i];
+        var thumbURL = item["im:image"][0].label
+        markup += "<a href='javascript:itemSelected(" + i + ")'>" 
+        + "<div class='thumb' style='background-image:url(" + thumbURL + ")'></div>"
+        + "<p>" + item["im:name"].label + "</p>"
+        + "<i>" + item["im:vendorName"].label + "</i>"
+         + "</a>"; 
+      }
+
+      document.getElementById("list").innerHTML = markup;
+      if($(window).innerWidth() > 500){
+        itemSelected(0);
+      }
+    }
+
+    loadFile(filename, callback);
+  </script>
+  <base href="http://subtlepatterns.com" >
+</head>
+
+<body onload='start()'>
+<h1> iTunes Top 100</h1>
+<div id='list' class="col-md-6 col-sm-6 col-xs-18"> </div>
+<div class='col-md-6 col-sm-6 col-xs-18 hidden-xs' id='detailsW'> 
+  <button class="col-xs-12 hidden-sm hidden-md" id='back' onclick='goBack()'> Back </button>
+  <div id='details' class="col-xs-18 col-sm-12 col-md-12"> </div>
+</div>
+</body>
+
+
+</html>

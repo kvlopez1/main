@@ -1,0 +1,128 @@
+<html>
+<head>
+	<title>
+    	Image Filter
+	</title>
+	<style>
+    	#imagePreview {
+        	display: block;
+    	}
+    	.center {
+        	position: absolute;
+        	width: 100%;
+        	margin: auto;
+        	text-align: center;
+    	}
+    	input[type="text"] {
+        	width: 100px;
+        	height: 30px;
+        	margin: auto;
+    	}
+    	input[type="range"] {
+        	width: 250px;
+        	margin: auto;
+    	}
+    	select{
+        	width: 150px;
+        	margin: auto;
+    	}
+    	.title{
+        	font-size: 45px;
+        	margin: auto;
+        	text-align: center;
+        	color: darkmagenta;
+    	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        	crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script>
+    	var MAX_WIDTH = 500;
+    	var MAX_HEIGHT = 500;
+    	var imageList = [];
+    	var canFilter = ["sepia(100%)", "invert(100%", "saturate(100%) opacity(50%)", "contrast(20%)", "grayscale(100%)", "opacity(20%)", "blur(3px)"];
+    	var imageUploaded = function () {
+        	var file = $('#uploadImage').get(0);
+        	console.log(file.files[0].type);
+        	if (file.files[0].type.split("/")[0].toLowerCase() != "image") {
+            	alert("Incorrect file type -- Please ensure you are uploading an image file.");
+            	return;
+        	}
+        	if (file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+            	var FR = new FileReader();
+            	FR.onload = function (e) {
+                	var data = e.target.result;
+                	console.log(data);
+                	var canvas = document.createElement("canvas");
+                	var img = document.createElement("img");
+                	img.onload = function () {
+                    	var width = img.width;
+                    	var height = img.height;
+
+                    	canvas.width = width;
+                    	canvas.height = height;
+                    	var ctx = canvas.getContext("2d");
+                    	ctx.filter = document.getElementById("canFilter").value;//'sepia(100%)';
+                    	ctx.drawImage(img, 0, 0, width, height);
+                    	var base64St = canvas.toDataURL("image/png");
+                    	document.getElementById("imagePreview").src = base64St;
+                    	document.getElementById("imagePreview").style.height = height + "px";
+                    	document.getElementById("imagePreview").style.width = height + "px";
+                	}
+                	img.src = data;
+            	};
+            	FR.readAsDataURL(file.files[0]);
+        	}
+    	}
+
+    	function presetSelected() {
+        	if (document.getElementById("filterPresets").value == "saturate"){
+            	document.getElementById('canFilter').value = document.getElementById('filterPresets').value + "(" + document.getElementById("rangeFilter").value + ") opacity(" + (document.getElementById("rangeFilter").value) / 2 + ")";
+        	}
+        	else if(document.getElementById("filterPresets").value == "blur"){
+            	document.getElementById('canFilter').value = document.getElementById("filterPresets").value + "(" + document.getElementById("rangeFilter").value + "px)";
+        	}
+        	else {
+            	document.getElementById('canFilter').value = document.getElementById('filterPresets').value + "(" + document.getElementById("rangeFilter").value + "%)";
+        	}
+        	imageUploaded();
+    	}
+	</script>
+
+</head>
+
+<body>
+	<p class="title">Image Filter</p>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+    	<input type="file" name="uploadImage" id="uploadImage" onchange="imageUploaded()" class="center"><br />
+	</div>
+	<div class="col-md-3 col-sm-3 col-xs-0"></div>
+	<div class="col-md-6 col-sm-6 col-xs-12 center">
+    	<div class="col-md-4 col-sm-4 col-xs-12">
+        	<select onchange='presetSelected()' id='filterPresets'>
+            	<option value="sepia"> Sepia </option>
+            	<option value='invert'> Invert </option>
+            	<option value='grayscale'>Grayscale</option>
+            	<option value='contrast'>Contrast</option>
+            	<option value='opacity'>Opacity</option>
+            	<option value='saturate'> Vintage </option>
+            	<option value='blur'>Blur</option>
+        	</select><br />
+    	</div>
+    	<div class="col-md-4 col-sm-4 col-xs-6">
+        	<input type='text' id='canFilter' readonly/>
+    	</div>
+    	<div class="col-md-4 col-sm-4 col-xs-6">
+        	<input type="range" id="rangeFilter" onchange="presetSelected()" max="100" min="0" style="float:right" />
+    	</div>
+	</div>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+    	<img id="imagePreview" class="center">
+	</div>
+</body>
+
+
+</html>
