@@ -1,14 +1,14 @@
-#Karen Lopez
+# Karen Lopez
 
-###Each folder on this repository contains different skills I've gathered. 
+### Each folder on this repository contains different skills I've gathered. 
 
-* _Front-End_
+* **Front-End**
 	* HTML
 	* CSS
 	* Bootstrap
 	* JavaScript
 	* JQuery
-* _Digital Computing (Arduino)_
+* **Digital Computing (Arduino)**
 	* Lantern
 	![alt text](https://github.com/kvlopez1/main/blob/master/img/Lantern.png)
 	* Vehicle
