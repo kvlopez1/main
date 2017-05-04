@@ -10,6 +10,8 @@
 	* JavaScript
 	* JQuery
 	* Rss
+* **Back-End**
+	* Java
 * **Digital Computing (Arduino)**
 	* Lantern
 	![alt text](https://github.com/kvlopez1/main/blob/master/img/Lantern.png)
