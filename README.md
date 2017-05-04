@@ -1,6 +1,7 @@
 # Karen Lopez
 
-### Each folder on this repository contains different skills I've gathered. 
+### Each folder on this repository contains different projects I've worked on.
+### My portfolio can be found here: https://kvlopez1.github.io/main/
 
 * **Front-End**
 	* HTML
@@ -8,6 +9,7 @@
 	* Bootstrap
 	* JavaScript
 	* JQuery
+	* Rss
 * **Digital Computing (Arduino)**
 	* Lantern
 	![alt text](https://github.com/kvlopez1/main/blob/master/img/Lantern.png)
