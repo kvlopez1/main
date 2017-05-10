@@ -38,7 +38,7 @@ p {
     line-height: 1.6;
   }
 }
-a {
+.contact-section a {
   color: #42DCA3;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
@@ -232,7 +232,7 @@ a:focus {
   background-size: cover;
   -o-background-size: cover;
 }
-.project-section a:link {
+.project-section p {
     color: #8E44AD;
 }
 .contact-section {
