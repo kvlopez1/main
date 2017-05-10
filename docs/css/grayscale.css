@@ -222,8 +222,8 @@ a:focus {
 }
 .project-section {
   width: 100%;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 120px;
+  margin-bottom: 120px;
   padding: 50px 0;
   color: #8E44AD;
   background: url(../img/downloads-bg2.jpg) no-repeat center center scroll;
@@ -233,8 +233,12 @@ a:focus {
   background-size: cover;
   -o-background-size: cover;
 }
-.project-section p {
-    color: #8E44AD;
+.project-section a {
+  color: #8E44AD;
+  font-weight: bold;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .contact-section {
   border-top:5px solid #42DCA3;
@@ -250,7 +254,7 @@ a:focus {
     padding-top: 100px;
     padding-bottom: 100px;
   }
-  .download-section {
+  .project-section {
     padding: 100px 0;
   }
   #map {
