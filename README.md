@@ -9,7 +9,6 @@
 	* Bootstrap
 	* JavaScript
 	* JQuery
-	* Rss
 * **Back-End**
 	* Java
 * **Digital Computing (Arduino)**
