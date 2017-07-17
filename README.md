@@ -1,7 +1,7 @@
 # Karen Lopez
 
 ### Each folder on this repository contains different projects I've worked on.
-### My portfolio can be found here: https://kvlopez1.github.io/main/
+### My portfolio can be found here: karenlopez.tech
 
 * **Front-End**
 	* HTML
